@@ -12,8 +12,9 @@ const rq = r(options, res => {
      res.on('data', d => console.log('>>>' + String(d)) || console.table(res.headers));
      
    })
-.on('error', i => console.log(i))
-.on('response', e => console.table(e.rawHeaders) || console.log(e.statusCode + ' ' + e.statusMessage))
+.on('error', e => console.log(e))
+.on('response', d => console.table(d.rawHeaders) || console.log(d.statusCode + ' ' + d.statusMessage));
+
 rq.setHeader('Content-Length', body.length); // без этого не получится послать GET+body
 rq.end(body);
 
