@@ -11,12 +11,12 @@ createServer((request, response) => {
     let finalResponse = ' GET '; // по умолчанию GET
     if (method !== 'GET') finalResponse = ' NOGET '; // если POST, PUT, DELETE etc
     let accumulator = ''; // накопитель
-    req
+    request
     .on('data', chunk => accumulator += chunk) /* чанки накапливаются */
     .on('end', () => {
 	     finalResponse += accumulator; // формирование ответа
-	     res.writeHead(200, { ...utfHeader }); // стильное формирование заголовка
-	     res.end(`${init}${url}${finalResponse}!`); // собственно ответ
+	     response.writeHead(200, { ...utfHeader }); // стильное формирование заголовка
+	     response.end(`${init}${url}${finalResponse}!`); // собственно ответ
 	  });
 })
 .listen(4321, '127.0.0.1', () => log(process.pid));
