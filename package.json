@@ -2,5 +2,8 @@
   "name": "gosshttpresearch",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+	  "start": "chmod +x ./sender.js && echo 'starting server' && node ."
+  }
 }
